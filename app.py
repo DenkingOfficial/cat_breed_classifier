@@ -1,4 +1,7 @@
 import gradio as gr
+import tensorflow as tf
+
+model = tf.keras.models.load_model('./models/20_cat_classes_model.h5')
 
 def predict():
     return 'Hello World!'
