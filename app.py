@@ -21,7 +21,7 @@ with gr.Blocks() as app:
             image = gr.Image(shape=(128, 128), label='Загрузите фотографию котика сюда')
             button = gr.Button(value='Определить породу')
         with gr.Column() as col_2:
-            text = gr.Label(label='Результат определения породы')
+            text = gr.Label(num_top_classes=5, label='Результат определения породы')
     button.click(fn=predict, inputs=image, outputs=text)
 
 if __name__ == '__main__':
