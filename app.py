@@ -1,5 +1,6 @@
 import gradio as gr
 import tensorflow as tf
+import numpy as np
 
 CAT_BREEDS = ['Бенгальская', 'Бомбейская', 'Бритнаская короткошерстная',    \
               'Бурмилла', 'Девон-рекс', 'Европейская короткошерстная',      \
@@ -11,14 +12,16 @@ CAT_BREEDS = ['Бенгальская', 'Бомбейская', 'Бритнас�
 model = tf.keras.models.load_model('./models/20_cat_classes_model.h5')
 
 def predict(image):
-    image = image.reshape((1, 128, 128, 3))
+    image = image.resize((128, 128))
+    image = np.asarray(image)
+    image = image.reshape(1, 128, 128, 3)
     prediction = model.predict(image)[0]
     return {CAT_BREEDS[i]: float(prediction[i]) for i in range(20)}
 
 with gr.Blocks() as app:
     with gr.Row() as row:
         with gr.Column() as col_1:
-            image = gr.Image(shape=(128, 128), label='Загрузите фотографию котика сюда')
+            image = gr.Image(label='Загрузите фотографию котика сюда', type='pil')
             button = gr.Button(value='Определить породу')
         with gr.Column() as col_2:
             text = gr.Label(num_top_classes=5, label='Результат определения породы')
