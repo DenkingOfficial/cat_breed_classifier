@@ -16,10 +16,10 @@ def predict(image):
 
 with gr.Blocks() as app:
     with gr.Row() as row:
-        with gr.Column() as col_1:
+        with gr.Column(scale=2) as col_1:
             image = gr.Image(label='Загрузите фотографию котика сюда', type='pil')
             button = gr.Button(value='Определить породу')
-        with gr.Column() as col_2:
+        with gr.Column(scale=1) as col_2:
             text = gr.Label(num_top_classes=5, label='Результат определения породы')
     breed_description = gr.Markdown()
     button.click(fn=predict, inputs=[image], outputs=[text, breed_description])
