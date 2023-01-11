@@ -1,0 +1,28 @@
+#main-row, #description {
+    width: 80%;
+    margin: auto;
+}
+
+#predictions_text, #user-image, #first-col{
+    height: 100% !important;
+    max-height: 100% !important;
+    min-height: 100% !important;
+}
+
+.h-60 {
+    height: 30em !important;
+}
+
+#description {
+    padding-top: 2%;
+}
+
+#main-row {
+    min-height: 30rem;
+}
+
+@media (min-width: 1536px){
+    .\32xl\:max-h-\[20rem\] {
+        max-height: 30rem;
+    }
+}
