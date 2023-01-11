@@ -1,9 +1,9 @@
-#main-row, #description {
+#main-row, #breed-description, #md-text {
     width: 80%;
     margin: auto;
 }
 
-#predictions_text, #user-image, #first-col{
+#predictions-text, #user-image, #first-col{
     height: 100% !important;
     max-height: 100% !important;
     min-height: 100% !important;
@@ -13,7 +13,7 @@
     height: 30em !important;
 }
 
-#description {
+#breed-description {
     padding-top: 2%;
 }
 
@@ -24,5 +24,22 @@
 @media (min-width: 1536px){
     .\32xl\:max-h-\[20rem\] {
         max-height: 30rem;
+    }
+}
+
+@media (min-width: 1280px){
+    .xl\:max-h-\[18rem\] {
+    max-height: 30rem;
+    }
+}
+
+#md-text {
+    padding-top: 3%;
+    padding-bottom: 2%;
+}
+
+@media (min-width: 768px){
+    .md\:min-h-\[15rem\] {
+        min-height: 26rem;
     }
 }
