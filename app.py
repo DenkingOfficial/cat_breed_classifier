@@ -5,7 +5,11 @@ import tensorflow as tf
 from fastapi import FastAPI
 from io import BytesIO
 from PIL import Image
+from pydantic import BaseModel
 from cat_breeds_dict import CAT_BREEDS, CAT_DESCRIPTIONS
+
+class Url(BaseModel):
+    link: str
 
 MODEL = tf.keras.models.load_model('./models/20_cat_classes_model.h5')
 GRADIO_PATH = '/'
@@ -25,9 +29,13 @@ def predict(image, api_mode=False):
         return {'breed':predicted_breed, 'description':breed_description}
     return {CAT_BREEDS[i]: float(prediction[i]) for i in range(20)}, breed_description
 
-@app.get('/predict_breed')
-def predict_api(url):
-    image = Image.open(BytesIO(requests.get(url).content))
+@app.post('/predict_breed/')
+def predict_api(url: Url):
+    try:
+        image = requests.get(url.link).content
+    except:
+        return {'error':'invalid link'}
+    image = Image.open(BytesIO(image))
     return predict(image, api_mode=True)
 
 with gr.Blocks(css='./static/style.css') as gradio_ui:
