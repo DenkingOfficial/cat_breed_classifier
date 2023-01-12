@@ -25,7 +25,7 @@ jobs:
     - name: Download model
       uses: wei/wget@v1.1.1
       with:
-        args: https://dl.dropboxusercontent.com/s/iga6rfyqpq0lnra/20_cat_classes_model.h5 --no-check-certificate -P ./models/
+        args: https://dl.dropboxusercontent.com/s/1lzg490mon371bo/20_cat_classes_model_v2.h5 --no-check-certificate -P ./models/
     - name: Lint with flake8
       run: |
         flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
