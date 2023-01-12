@@ -1,8 +1,75 @@
-# Cat Breed Classifier
+# \[EN\] Cat Breed Classifier
 
-This app was developed by students of Ural Federal University
+![build status](https://img.shields.io/github/actions/workflow/status/DenkingOfficial/cat_breed_classifier/python-app.yml?style=flat-square)
+[![Try on HuggingFace](https://img.shields.io/badge/%F0%9F%A4%97-Try%20on%20HuggingFace-yellow?style=flat-square)](https://huggingface.co/spaces/duuuuuuuden/cat_breed_classifier)
 
-Shershnev Andrey, Ivanov Sergey, Shalaeva Irina, Ilyin Semen
-RIM-120906, RIM-120907
+This is an app that can classify the breed of a cat based on a photo.
 
-This app is WIP
+It uses a VGG-16 ImageNet model finetuned on images of cats of various breeds. The model is able to recognize a 20 of breeds.
+
+## Requirements
+
+- Python 3.8 or higher
+- Gradio 3.15.0
+- Tensorflow 2.10
+- Numpy 1.23.3
+- Requests 2.25.1
+- Pillow 9.0.1
+- FastApi 0.88.0
+- Uvicorn 0.20.0 or higher
+
+## How to use
+
+1. Clone this repository using `git clone https://github.com/DenkingOfficial/cat_breed_classifier.git`
+2. Enter the cloned directory `cd cat_breed_classifier`
+3. Install requirements by running `pip install -r requirements.txt`
+4. Download a model from [here](https://www.dropbox.com/s/iga6rfyqpq0lnra/20_cat_classes_model.h5) and place it into `models` folder
+5. Run app using `uvicorn app:app`
+
+## Authors
+
+This app was developed by students of Ural Federal University (UrFU):
+
+- Shershnev Andrey, RIM-120907 - Model Training, App Development
+- Ivanov Sergey, RIM-120906 - API Development, Dataset collection
+- Shalaeva Irina, RIM-120906 - UI Styling, Dataset collection
+- Ilyin Semen, RIM-120907 - App Development, Dataset collection
+
+---
+
+# \[RU\] Классификатор пород кошек
+
+![build status](https://img.shields.io/github/actions/workflow/status/DenkingOfficial/cat_breed_classifier/python-app.yml?style=flat-square)
+[![Try on HuggingFace](https://img.shields.io/badge/%F0%9F%A4%97-Try%20on%20HuggingFace-yellow?style=flat-square)](https://huggingface.co/spaces/duuuuuuuden/cat_breed_classifier)
+
+Это веб-приложение, которое позволяет определять породу кошки по фотографии.
+
+Оно использует модель VGG-16 ImageNet тонко настроенную на изображениях кошек разных пород. Данная модель позволяет определять 20 пород.
+
+## Зависимости
+
+- Python 3.8 или новее
+- Gradio 3.15.0
+- Tensorflow 2.10
+- Numpy 1.23.3
+- Requests 2.25.1
+- Pillow 9.0.1
+- FastApi 0.88.0
+- Uvicorn 0.20.0 или новее
+
+## Как использовать
+
+1. Загрузить данный репозиторий используя команду `git clone https://github.com/DenkingOfficial/cat_breed_classifier.git`
+2. Перейти в директорию репозитория `cd cat_breed_classifier`
+3. Установить зависимости используя команду `pip install -r requirements.txt`
+4. Скачать модель [отсюда](https://www.dropbox.com/s/iga6rfyqpq0lnra/20_cat_classes_model.h5) и скопировать ее в папку `models`
+5. Запустить приложение используя команду `uvicorn app:app`
+
+## Авторы
+
+Это приложение было разработано студентами Уральского Федерального университета (УрФУ):
+
+- Шершнев Андрей, РИМ-120907 - тренировка модели, разработка приложения
+- Иванов Сергей, РИМ-120906 - разработка API, сбор датасета
+- Шалаева Ирина, РИМ-120906 - стилизация интерфейса, сбор датасета
+- Ильин Семен, РИМ-120907 - разработка приложения, сбор датасета
