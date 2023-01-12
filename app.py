@@ -1,11 +1,18 @@
 import gradio as gr
-import tensorflow as tf
 import numpy as np
+import requests
+import tensorflow as tf
+from fastapi import FastAPI
+from io import BytesIO
+from PIL import Image
 from cat_breeds_dict import CAT_BREEDS, CAT_DESCRIPTIONS
 
 MODEL = tf.keras.models.load_model('./models/20_cat_classes_model.h5')
+GRADIO_PATH = '/'
 
-def predict(image):
+app = FastAPI()
+
+def predict(image, api_mode=False):
     image = image.resize((128, 128))
     image = np.asarray(image)
     image = image.reshape(1, 128, 128, 3)
@@ -14,9 +21,16 @@ def predict(image):
     predicted_breed = CAT_BREEDS[np.argmax(prediction)]
     breed_description = CAT_DESCRIPTIONS[predicted_breed]
 
+    if api_mode:
+        return {'breed':predicted_breed, 'description':breed_description}
     return {CAT_BREEDS[i]: float(prediction[i]) for i in range(20)}, breed_description
 
-with gr.Blocks(css='./static/style.css') as app:
+@app.get('/predict_breed')
+def predict_api(url):
+    image = Image.open(BytesIO(requests.get(url).content))
+    return predict(image, api_mode=True)
+
+with gr.Blocks(css='./static/style.css') as gradio_ui:
 
     gr.Markdown(
         """
@@ -52,5 +66,4 @@ with gr.Blocks(css='./static/style.css') as app:
         outputs=[predicted_labels, breed_description]
     )
 
-if __name__ == '__main__':
-    app.launch(debug=True)
+    app = gr.mount_gradio_app(app, gradio_ui, path=GRADIO_PATH)
