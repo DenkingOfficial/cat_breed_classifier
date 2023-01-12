@@ -13,7 +13,7 @@ class Url(BaseModel):
     link: str
 
 
-MODEL = tf.keras.models.load_model('./models/20_cat_classes_model.h5')
+MODEL = tf.keras.models.load_model('./models/20_cat_classes_model_v2.h5')
 GRADIO_PATH = '/'
 
 app = FastAPI()
