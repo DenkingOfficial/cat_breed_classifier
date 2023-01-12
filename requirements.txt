@@ -1,0 +1,6 @@
+gradio==3.15.0
+numpy==1.23.3
+requests==2.25.1
+tensorflow-cpu==2.10.0
+Pillow==9.0.1
+fastapi==0.88.0
