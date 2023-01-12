@@ -22,4 +22,4 @@ def test_not_url_predict():
     response = client.post("/predict_breed/",
                            json={"link": "not_an_url"})
     json_data = response.json()
-    assert json_data['error'] == 'invalid link'
+    assert json_data['error'] == 'Invalid link'
