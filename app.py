@@ -8,13 +8,16 @@ from PIL import Image
 from pydantic import BaseModel
 from cat_breeds_dict import CAT_BREEDS, CAT_DESCRIPTIONS
 
+
 class Url(BaseModel):
     link: str
+
 
 MODEL = tf.keras.models.load_model('./models/20_cat_classes_model.h5')
 GRADIO_PATH = '/'
 
 app = FastAPI()
+
 
 def predict(image, api_mode=False):
     image = image.resize((128, 128))
@@ -26,29 +29,33 @@ def predict(image, api_mode=False):
     breed_description = CAT_DESCRIPTIONS[predicted_breed]
 
     if api_mode:
-        return {'breed':predicted_breed, 'description':breed_description}
-    return {CAT_BREEDS[i]: float(prediction[i]) for i in range(20)}, breed_description
+        return {'breed': predicted_breed, 'description': breed_description}
+    return {CAT_BREEDS[i]: float(prediction[i]) for i in range(20)}, \
+        breed_description
+
 
 @app.post('/predict_breed/')
 def predict_api(url: Url):
     try:
         image = requests.get(url.link).content
     except:
-        return {'error':'invalid link'}
+        return {'error': 'Invalid link'}
     image = Image.open(BytesIO(image))
     return predict(image, api_mode=True)
+
 
 with gr.Blocks(css='./static/style.css') as gradio_ui:
 
     gr.Markdown(
         """
         # Классификатор пород котов
-        Разработано студентами Шершневым А.А, Ивановым С.С, Шалаевой И.Г. и Ильиным С.С.
+        Разработано студентами Шершневым А.А, Ивановым С.С, Шалаевой И.Г. и
+        Ильиным С.С.
         Группы: РИМ-120906, РИМ-120907
         """,
         elem_id='md-text'
     )
-    
+
     with gr.Row(elem_id='main-row') as row:
 
         with gr.Column(scale=2, elem_id='first-col') as col_1:
@@ -58,14 +65,14 @@ with gr.Blocks(css='./static/style.css') as gradio_ui:
                 elem_id='user-image'
             )
             predict_button = gr.Button(value='Определить породу')
-        
+
         with gr.Column(scale=1, elem_id='second-col') as col_2:
             predicted_labels = gr.Label(
                 num_top_classes=5,
                 label='Результат определения породы',
                 elem_id='predictions-text'
             )
-    
+
     breed_description = gr.Markdown(elem_id='breed-description')
 
     predict_button.click(
