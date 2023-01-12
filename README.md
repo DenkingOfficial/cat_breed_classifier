@@ -26,6 +26,10 @@ It uses a VGG-16 ImageNet model finetuned on images of cats of various breeds. T
 4. Download a model from [here](https://www.dropbox.com/s/iga6rfyqpq0lnra/20_cat_classes_model.h5) and place it into `models` folder
 5. Run app using `uvicorn app:app`
 
+## Demonstration
+
+![App demonstration](https://user-images.githubusercontent.com/38957619/212042151-8cded892-4153-48d2-b98b-7430e0149bba.gif)
+
 ## Authors
 
 This app was developed by students of Ural Federal University (UrFU):
