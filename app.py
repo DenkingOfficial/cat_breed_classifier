@@ -28,18 +28,28 @@ def predict(image, api_mode=False):
     predicted_breed = CAT_BREEDS[np.argmax(prediction)]
     breed_description = CAT_DESCRIPTIONS[predicted_breed]
 
+    all_predictions = {CAT_BREEDS[i]: float(prediction[i]) for i in range(20)}
+
     if api_mode:
-        return {'breed': predicted_breed, 'description': breed_description}
-    return {CAT_BREEDS[i]: float(prediction[i]) for i in range(20)}, \
-        breed_description
+        breed_description = ' '.join(breed_description.replace('\n', '.')
+                                                      .replace('#', '')
+                                                      .split())
+
+        return {
+            'breed': predicted_breed,
+            'description': breed_description,
+            'predictions': all_predictions
+            }
+    return all_predictions, breed_description
 
 
 @app.post('/predict_breed/')
 def predict_api(url: Url):
     try:
         image = requests.get(url.link).content
-    except:
-        return {'error': 'Invalid link'}
+    except Exception as e:
+        print(e)
+        return {'error': 'Invalid link', 'exception': str(e)}
     image = Image.open(BytesIO(image))
     return predict(image, api_mode=True)
 
