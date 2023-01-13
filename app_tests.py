@@ -11,7 +11,7 @@ def test_working():
 
 def test_url_predict():
     response = client.post("/predict_breed/",
-                           json={"link": "https://www.ellevetsciences.com/wp-content/uploads/2022/09/ev-blog-scottishfold_header-1024x683.jpg"})
+                           json={"link": "https://i.imgur.com/6pDqi0Y.jpg"})
     json_data = response.json()
 
     assert response.status_code == 200
