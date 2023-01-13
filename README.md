@@ -5,7 +5,7 @@
 
 This is an app that can classify the breed of a cat based on a photo.
 
-It uses a VGG-16 ImageNet model finetuned on images of cats of various breeds. The model is able to recognize a 20 of breeds.
+It uses a VGG-16 ImageNet model finetuned on images of cats of various breeds. The model is able to recognize 20 breeds. See list [here](https://github.com/DenkingOfficial/cat_breed_classifier/tree/main/models).
 
 ## Requirements
 
@@ -48,7 +48,7 @@ This app was developed by students of Ural Federal University (UrFU):
 
 Это веб-приложение, которое позволяет определять породу кошки по фотографии.
 
-Оно использует модель VGG-16 ImageNet тонко настроенную на изображениях кошек разных пород. Данная модель позволяет определять 20 пород.
+Оно использует модель VGG-16 ImageNet тонко настроенную на изображениях кошек разных пород. Данная модель позволяет определять 20 пород. Посмотреть список можно [здесь](https://github.com/DenkingOfficial/cat_breed_classifier/tree/main/models).
 
 ## Зависимости
 
