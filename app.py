@@ -53,7 +53,7 @@ def predict_api(url: Url):
     return predict(image, api_mode=True)
 
 
-with gr.Blocks(css='./static/style.css') as gradio_ui:
+with gr.Blocks(css='./static/style.css', title="Cat Classifier") as gradio_ui:
 
     gr.Markdown(
         """
