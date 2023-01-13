@@ -48,7 +48,6 @@ def predict_api(url: Url):
     try:
         image = requests.get(url.link).content
     except Exception as e:
-        print(e)
         return {'error': 'Invalid link', 'exception': str(e)}
     image = Image.open(BytesIO(image))
     return predict(image, api_mode=True)
