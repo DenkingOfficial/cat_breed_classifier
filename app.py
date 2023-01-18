@@ -7,6 +7,7 @@ from io import BytesIO
 from PIL import Image
 from pydantic import BaseModel
 from cat_breeds_dict import CAT_BREEDS, CAT_DESCRIPTIONS
+from scripts.crop_image import crop_image
 
 
 class Url(BaseModel):
@@ -20,6 +21,7 @@ app = FastAPI()
 
 
 def predict(image, api_mode=False):
+    image = crop_image(image)
     image = image.resize((128, 128))
     image = np.asarray(image)
     image = image.reshape(1, 128, 128, 3)
