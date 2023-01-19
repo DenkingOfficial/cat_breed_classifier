@@ -22,7 +22,7 @@ app = FastAPI()
 
 
 def predict(image, api_mode=False):
-    image = crop_image(image)
+    image = crop_image(image, INPUT_SHAPE, INPUT_SHAPE)
     image = image.resize((INPUT_SHAPE, INPUT_SHAPE))
     image = np.asarray(image)
     image = image.reshape(1, INPUT_SHAPE, INPUT_SHAPE, 3)
