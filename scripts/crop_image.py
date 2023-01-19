@@ -2,7 +2,7 @@ import smartcrop
 from PIL import Image
 
 
-def crop_image(image, width=128, height=128):
+def crop_image(image, width=224, height=224):
     new_image = Image.new('RGB', image.size)
     new_image.paste(image)
     image = new_image

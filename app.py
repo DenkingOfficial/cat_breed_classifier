@@ -14,23 +14,26 @@ class Url(BaseModel):
     link: str
 
 
-MODEL = tf.keras.models.load_model('./models/20_cat_classes_model_v2.h5')
+MODEL = tf.keras.models.load_model('./models/cats_18_EfficientNetB0.h5')
 GRADIO_PATH = '/'
-
+INPUT_SHAPE = MODEL.layers[0].input_shape[1]
+NUM_CLASSES = MODEL.layers[-1].output_shape[1]
 app = FastAPI()
 
 
 def predict(image, api_mode=False):
     image = crop_image(image)
-    image = image.resize((128, 128))
+    image = image.resize((INPUT_SHAPE, INPUT_SHAPE))
     image = np.asarray(image)
-    image = image.reshape(1, 128, 128, 3)
+    image = image.reshape(1, INPUT_SHAPE, INPUT_SHAPE, 3)
 
     prediction = MODEL.predict(image)[0]
     predicted_breed = CAT_BREEDS[np.argmax(prediction)]
     breed_description = CAT_DESCRIPTIONS[predicted_breed]
 
-    all_predictions = {CAT_BREEDS[i]: float(prediction[i]) for i in range(20)}
+    all_predictions = {
+        CAT_BREEDS[i]: float(prediction[i]) for i in range(NUM_CLASSES)
+        }
 
     if api_mode:
         breed_description = ' '.join(breed_description.replace('\n', '.')
@@ -42,7 +45,7 @@ def predict(image, api_mode=False):
             'description': breed_description,
             'predictions': all_predictions
             }
-    return all_predictions, breed_description
+    return all_predictions, breed_description, gr.HTML.update(visible=True), gr.Markdown.update(visible=True)
 
 
 @app.post('/predict_breed/')
@@ -85,11 +88,22 @@ with gr.Blocks(css='./static/style.css', title="Cat Classifier") as gradio_ui:
             )
 
     breed_description = gr.Markdown(elem_id='breed-description')
+    banner_text = gr.Markdown(
+        """
+        # <center>Места, которые будут Вам интересны</center>
+        """, visible=False
+    )
+    embedded_map = gr.HTML('''
+    <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A8cead4799165c7f6356c4f269f2847032ef2803cb46871dbfd6dd68c09834f4c&amp;source=constructor" width="100%" height="500" frameborder="0"></iframe>
+    ''', visible=False, elem_id='embedded-map')
 
     predict_button.click(
         fn=predict,
         inputs=[user_image],
-        outputs=[predicted_labels, breed_description]
+        outputs=[
+            predicted_labels, breed_description,
+            embedded_map, banner_text
+            ]
     )
 
     app = gr.mount_gradio_app(app, gradio_ui, path=GRADIO_PATH)

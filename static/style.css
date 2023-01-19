@@ -1,4 +1,4 @@
-#main-row, #breed-description, #md-text {
+#main-row, #md-text {
     width: 80%;
     margin: auto;
 }
@@ -20,6 +20,7 @@
 
 #breed-description {
     padding-top: 2%;
+    padding-bottom: 4%;
 }
 
 .h-60 {
