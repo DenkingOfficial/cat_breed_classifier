@@ -1,6 +1,6 @@
 # \[EN\] Models
 
-Model [`20_cat_classes_model_v2`](https://www.dropbox.com/s/1lzg490mon371bo/20_cat_classes_model_v2.h5) is able to recognize 20 various breeds, they are:
+Model [`cats_18_EfficientNetB0`](https://www.dropbox.com/s/jqzwew182acdohn/cats_18_EfficientNetB0.h5) is able to recognize 18 various breeds, they are:
 
 ```
 Bengal
@@ -13,10 +13,8 @@ Exotic Shorthair
 Maine Coon
 Nebelung
 Persian
-Peterbald
 Ragdoll
 Russian Blue
-Savannah
 Scottish Fold
 Siberian
 Singapura
@@ -27,7 +25,7 @@ Tortoiseshell
 
 # \[RU\] Модели
 
-Модель [`20_cat_classes_model_v2`](https://www.dropbox.com/s/1lzg490mon371bo/20_cat_classes_model_v2.h5) может распознавать 20 различных пород:
+Модель [`cats_18_EfficientNetB0`](https://www.dropbox.com/s/jqzwew182acdohn/cats_18_EfficientNetB0.h5) может распознавать 18 различных пород:
 
 ```
 Бенгальская
@@ -40,10 +38,8 @@ Tortoiseshell
 Мейн-кун
 Нибелунг
 Персидская
-Питерболд
 Рэгдолл
 Русская голубая
-Саванна
 Шотландская вислоухая
 Сибирская
 Сингапурская

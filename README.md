@@ -5,7 +5,7 @@
 
 This is an app that can classify the breed of a cat based on a photo.
 
-It uses a VGG-16 ImageNet model finetuned on images of cats of various breeds. The model is able to recognize 20 breeds. See list [here](https://github.com/DenkingOfficial/cat_breed_classifier/tree/main/models).
+It uses a EfficientNetB0 ImageNet model finetuned on images of cats of various breeds. The model is able to recognize 18 breeds. See list [here](https://github.com/DenkingOfficial/cat_breed_classifier/tree/main/models).
 
 ## Requirements
 
@@ -17,13 +17,14 @@ It uses a VGG-16 ImageNet model finetuned on images of cats of various breeds. T
 - Pillow 9.0.1
 - FastApi 0.88.0
 - Uvicorn 0.20.0 or higher
+- Smartcrop.py
 
 ## How to use
 
 1. Clone this repository using `git clone https://github.com/DenkingOfficial/cat_breed_classifier.git`
 2. Enter the cloned directory `cd cat_breed_classifier`
 3. Install requirements by running `pip install -r requirements.txt`
-4. Download a model from [here](https://www.dropbox.com/s/1lzg490mon371bo/20_cat_classes_model_v2.h5) and place it into `models` folder
+4. Download a model from [here](https://www.dropbox.com/s/jqzwew182acdohn/cats_18_EfficientNetB0.h5) and place it into `models` folder
 5. Run app using `uvicorn app:app`
 
 ## Demonstration
@@ -48,7 +49,7 @@ This app was developed by students of Ural Federal University (UrFU):
 
 Это веб-приложение, которое позволяет определять породу кошки по фотографии.
 
-Оно использует модель VGG-16 ImageNet тонко настроенную на изображениях кошек разных пород. Данная модель позволяет определять 20 пород. Посмотреть список можно [здесь](https://github.com/DenkingOfficial/cat_breed_classifier/tree/main/models).
+Оно использует модель EfficientNetB0 ImageNet тонко настроенную на изображениях кошек разных пород. Данная модель позволяет определять 18 пород. Посмотреть список можно [здесь](https://github.com/DenkingOfficial/cat_breed_classifier/tree/main/models).
 
 ## Зависимости
 
@@ -60,13 +61,14 @@ This app was developed by students of Ural Federal University (UrFU):
 - Pillow 9.0.1
 - FastApi 0.88.0
 - Uvicorn 0.20.0 или новее
+- Smartcrop.py
 
 ## Как использовать
 
 1. Загрузить данный репозиторий используя команду `git clone https://github.com/DenkingOfficial/cat_breed_classifier.git`
 2. Перейти в директорию репозитория `cd cat_breed_classifier`
 3. Установить зависимости используя команду `pip install -r requirements.txt`
-4. Скачать модель [отсюда](https://www.dropbox.com/s/1lzg490mon371bo/20_cat_classes_model_v2.h5) и скопировать ее в папку `models`
+4. Скачать модель [отсюда](https://www.dropbox.com/s/jqzwew182acdohn/cats_18_EfficientNetB0.h5) и скопировать ее в папку `models`
 5. Запустить приложение используя команду `uvicorn app:app`
 
 ## Авторы
