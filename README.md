@@ -36,9 +36,10 @@ It uses a EfficientNetB0 ImageNet model finetuned on images of cats of various b
 This app was developed by students of Ural Federal University (UrFU):
 
 - Shershnev Andrey, RIM-120907 - Model Training, App Development
-- Ivanov Sergey, RIM-120906 - API Development, Dataset collection
+- Onuchina Margarita, RIM-120908 - UI Styling, Dataset collection
 - Shalaeva Irina, RIM-120906 - UI Styling, Dataset collection
 - Ilyin Semen, RIM-120907 - App Development, Dataset collection
+- Ivanov Sergey, RIM-120906 - API Development, Dataset collection
 
 ---
 
@@ -76,6 +77,7 @@ This app was developed by students of Ural Federal University (UrFU):
 Это приложение было разработано студентами Уральского Федерального университета (УрФУ):
 
 - Шершнев Андрей, РИМ-120907 - тренировка модели, разработка приложения
-- Иванов Сергей, РИМ-120906 - разработка API, сбор датасета
+- Онучина Маргарита, РИМ-120908 - стилизация интерфейса, сбор датасета
 - Шалаева Ирина, РИМ-120906 - стилизация интерфейса, сбор датасета
 - Ильин Семен, РИМ-120907 - разработка приложения, сбор датасета
+- Иванов Сергей, РИМ-120906 - разработка API, сбор датасета
